@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="refresh" content="3; url=home.html">
+    <title>Splashscreen</title>
+    <style>
+        /* Reset margin and padding for body and html, set full width and height, hide overflow */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-image: url(images/splashscreen.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Style for the splash screen container */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5); 
+            color: white;
+            text-align: center;
+        }
+
+        /* Style for the splash content box */
+        #splash-content {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7); 
+            border-radius: 10px;
+        }
+        
+        /* Style for the button */
+        input[type="button"] {
+            background-color: #ffdf00;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: large;
+        }
+
+        /* Style for the icon image */
+        .icon {
+            margin-top: 20px;
+        }
+
+        /* Style for the loader image */
+        .loader {
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="splash-screen">
+        <div id="splash-content">
+            <h1>Affordable and Clean Energy</h1>
+            <p>Ensuring access to affordable, reliable, sustainable and modern energy for all.</p>
+            <p><strong>Group Members:</strong></p>
+            <p>Erik Manukyan</p>
+            <p>Connor Aim</p>
+            <p>Sergio Trujillo Lopez</p>
+            <p>Danny Fitzgerald</p>
+            <input type="button" value="Home" onclick="window.location.href='https://w2087391.users.ecs.westminster.ac.uk/webdev/atoms/home.html'">
+            <br>
+            <img src="images/icon.jpg" alt="" class="icon" width="60" height="60" >
+            <br>
+            <img src="images/loader.gif" alt="" class="loader" width="60" height="60" >
+        </div>    
+    </div>
+</body>
+</html>

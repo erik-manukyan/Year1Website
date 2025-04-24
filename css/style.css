@@ -1,0 +1,74 @@
+/* General body styling */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f9f9f9;
+}
+
+/* Top navigation bar styling */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+  width: 99%;
+}
+
+/* Top navigation links styling */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Top navigation links hover effect */
+.topnav a:hover {
+  background-color: #ffdf00;
+  color: black;
+}
+
+/* Active link styling in the top navigation */
+.topnav a.active {
+  background-color: #ffdf00;
+  color: black;
+}
+
+/* Footer styling */
+footer {
+  text-align: center;
+  background-color: #333;
+  margin-top: 40px;
+}
+
+/* Footer container styling */
+.footer {
+  background-color: #333;
+  color: #f2f2f2;
+  text-align: center;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  width: 100%;
+}
+
+/* Footer links styling */
+.footerlinks a {
+  color: #f2f2f2;
+  text-decoration: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  display: inline-block;
+}
+
+/* Footer links hover effect */
+.footerlinks a:hover {
+  background-color: #ffdf00;
+  color: black;
+  color: white; /* This line is redundant as it overrides the previous color */
+}
+
+/* Footer text styling */
+.footertext {
+  margin-top: 10px;
+  font-size: 14px;
+  color: white;
+}

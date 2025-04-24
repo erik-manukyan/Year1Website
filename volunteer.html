@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteering</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Styling for iframe */
+        iframe{
+            border-radius: 20px;
+            border: none;
+            margin-left: 30px;
+        }
+
+        /* Styling for the reviews and ratings section */
+        text h1{
+            margin-bottom: -20px;
+            color: #00a86b;
+        }
+
+        text p{
+            font-size: 12px;
+        }
+
+        .reviews-section {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            margin-left: auto;
+            margin-top: 30px;
+            background-color: #f9f9f9;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            margin-left: 20px;
+        }
+
+        .text{
+            width: 50%;
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+        
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .card{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px 0;
+            margin-top: 20px;
+            margin-right: 20px;
+        }
+
+        .card:hover{
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .info-item {
+            flex: 1;
+            text-align: center;
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .card .details {
+            background: #f1f1f1;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+
+        .card p {
+            font-size: 16px;
+            color: #333;
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+
+        .card h4 {
+            font-size: 24px;
+            margin-left: 15px;
+        }
+
+        .card a {
+            color: #f1f1f1;
+            text-decoration: none;
+            background-color: #ffdf00;
+            padding: 5px 10px;
+            margin-top: 20px;
+            border-radius: 15px;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        .card a:hover {
+            background-color: #333;
+            color: #f1f1f1;
+        }
+
+        .see-more, .submit, .cancel{
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 15px;
+            width: 150px;
+        }
+
+        .see-more{
+            background-color: #ffdf00;
+        }
+
+        .cancel{
+            background-color: gray;
+        }
+
+        .submit{
+            background-color: #00a86b;
+        }
+
+        .see-more:hover, .cancel:hover, .submit:hover {
+            background-color: #333;
+            color: white;
+        }
+
+        .feedback{
+            display: flex;
+            flex-direction: row;
+            justify-content: right;
+            background-color: #f9f9f9;
+            margin-right: 20px;
+        }
+
+        .subfeedback{
+            margin-top: 20px;
+        }
+
+        .writing{
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            border-width: 1px;
+            padding: 10px;
+            width: 500px;
+        }
+
+        .feedback-button{
+            display: flex;
+            flex-direction: row;
+            justify-content: right;
+        }
+
+        .tr{
+            padding: 20px;
+        }
+
+        .emoji{
+            width: 30px;
+            height: 30px;
+        }
+
+        .emoji:hover{
+            cursor: pointer;
+            background-color: orange;
+            border-radius: 20px;
+        }
+
+        .emoji:active{
+            transform: scale(1.1);
+            background-color: orange;
+            border-radius: 20px;
+        }
+
+        .emoji:checked{
+            background-color: orange;
+            border-radius: 20px;
+        }
+
+        td:hover{
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        td {
+            padding: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        td label {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        input[type="radio"]:checked + label {
+            background-color: orange;
+            border-radius: 40px;
+        }
+        
+        .no:hover{
+            background-color: #f9f9f9;
+            cursor: default;
+        }
+
+        .top {
+            position: fixed;
+            bottom: 5%;
+            right: 5%;
+        }
+        
+        .top a {
+            padding: 10px 20px; /* Adds padding for button-like feel */
+            background-color: #333; /* Button color */
+            color: white; /* Text color */
+            text-decoration: none; /* Removes underline */
+            border-radius: 20px; /* Rounds the corners */
+            font-size: 12px; /* Adjust font size */
+            font-weight: bold; /* Make the text stand out */
+        }
+
+        .top a:hover {
+            background-color: #ffdf00; /* Darker shade on hover */
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="topnav">
+            <!-- Navigation links -->
+            <a tabindex="0" tabindex="0" href="https://w2087391.users.ecs.westminster.ac.uk/webdev/atoms/home.html">Home</a>
+            <a tabindex="0" tabindex="0" href="https://w2077076.users.ecs.westminster.ac.uk/webdev/atoms/volunteer.html">Volunteer</a>
+            <a tabindex="0" tabindex="0" href="https://w2087391.users.ecs.westminster.ac.uk/webdev/atoms/table.html">Table</a>
+            <a tabindex="0" tabindex="0" href="https://w2058708.users.ecs.westminster.ac.uk/webDev/atoms/profile.html">User Profile</a>
+            <a tabindex="0" tabindex="0" href="https://w2077158.users.ecs.westminster.ac.uk/atoms/feedback.html">Feedback</a>
+            <a tabindex="0" tabindex="0" href="https://w2058708.users.ecs.westminster.ac.uk/webDev/atoms/profile.html">Sitemap</a>
+            <a tabindex="0" tabindex="0" href="https://w2077158.users.ecs.westminster.ac.uk/atoms/team.html">Team</a>
+        </div>
+    </header>
+    
+    <br>
+    <div class="volcards">
+        <!-- Embedded iframe for volunteering cards -->
+        <iframe src="volunteeringcards.html" width="1400" height="600"></iframe>
+    </div>
+    <div class="reviews-section">
+        <div class="text">
+            <!-- Reviews and ratings summary -->
+            <h2>Reviews & Ratings</h2>
+            <h3>Trustscore: 9.29/10 Exceptional</h3>
+            <h3>Recommend: 9/10</h3>
+            <h3>Rating: 4.6/5</h3>
+            <p>Based on 3,049 reviews</p>
+            <input type="button" value="See More" class="see-more" onclick="window.location.href='https://app.ravecapture.com/store/Volunteer-World'"> 
+        </div>    
+        <div class="card">
+            <!-- Individual review card -->
+            <h4>10/10 Excellent</h4>
+            <p>Positive experience with the platform, it was very easy to find the experience I was looking for and booking was smooth.
+                The only thing that confused me a bit at the beginning was the rating system, since the platform shows the average rating for an organisation across all kinds of activities it may offer on the platform, but since I just landed on the listing of one specific activity (without knowing about other activities), I was expecting to find (or to be able to filter) the ratings of that activity only. In any case, the specific activity is clearly indicated at the top of each single review.<br> <br><a href="https://app.ravecapture.com/store/Volunteer-World">See More</a></p>
+            <p>- Daniele F, Feb 2025</p>
+        </div>
+        <div class="card">
+            <!-- Individual review card -->
+            <h4>9/10 Amazing </h4>
+            <p>What do you mean by honest? You don't know me and I don't know you. But I want to support you. Are we talking about high expectations here? My trust is not given lightly. How good you are only becomes apparent when things aren't going so well. How can I recommend you to friends? I only know your kind words, not your actions. But without confidence I would not have chosen you.<br><br><br><br><br><br><a href="https://app.ravecapture.com/store/Volunteer-World?page=3">See More</a></p>
+            <p>- Urs S, Feb 2025</p>
+        </div>
+    </div>
+
+    <div class="feedback">
+        <div class="subfeedback">
+            <table>
+                <tr>
+                    <th>Send us your review</th>
+                    <!-- Feedback options with emojis -->
+                    <td>
+                        <input type="radio" id="sad" name="feedback" value="sad">
+                        <label for="sad"><img src="images/annoyed.png" alt="rate - 1/5" class="emoji"></label>
+                    </td>
+                    <td>
+                        <input type="radio" id="annoyed" name="feedback" value="annoyed">
+                        <label for="annoyed"><img src="images/sad.png" alt="rate - 2/5" class="emoji"></label>
+                    </td>
+                    <td>
+                        <input type="radio" id="face" name="feedback" value="face">
+                        <label for="face"><img src="images/face.png" alt="rate - 3/5" class="emoji"></label>
+                    </td>
+                    <td>
+                        <input type="radio" id="happiness" name="feedback" value="happiness">
+                        <label for="happiness"><img src="images/happiness.png" alt="rate - 4/5" class="emoji"></label>
+                    </td>
+                    <td>
+                        <input type="radio" id="grinning" name="feedback" value="grinning">
+                        <label for="grinning"><img src="images/grinning.png" alt="rate 5/5" class="emoji"></label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6" class="no">
+                        <p>Got suggestions? We'd love to hear them!</p>
+                    </td>    
+                </tr>    
+            </table>
+            <!-- Feedback form -->
+            <form action="volunteering.php" method="post">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" class="writing"><br>
+                <label for="email">Email:</label><br>
+                <input type="text" id="email" name="email" class="writing"><br>
+                <label for="feedback">Feedback:</label><br>
+                <textarea id="feedback" name="feedback" rows = 10 class="writing"></textarea><br>
+                <div class="feedback-button">
+                <br>
+                <input type="button" value="Send Feedback" class="submit">
+                <input type="button" value="Cancel" class="cancel">
+                </div>
+            </form>
+        </div>
+    </div>
+    <p class="top"><a href="#top">Go top</a></p>
+
+    <footer>
+        <div class="footerlinks">
+            <a tabindex="0" href="https://w2077076.users.ecs.westminster.ac.uk/webdev/atoms/content_ST1.html">Content Page</a>
+            <a tabindex="0" href="https://w2077076.users.ecs.westminster.ac.uk/webdev/atoms/validation_ST1.html">Validation Page</a>
+            <a tabindex="0" href="https://w2077076.users.ecs.westminster.ac.uk/webdev/atoms/pageEditor_ST1.html">Page Editor</a>
+            
+            <p class="footertext">Subpages associated with Student 1.</p>
+        </div>
+    </footer>  
+</body>
+    
+</html>

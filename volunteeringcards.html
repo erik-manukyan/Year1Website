@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteering Cards</title>
+    <style>
+        /* Basic styling for the body */
+        body{
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            font-size: 14px;
+            margin-left: 0.5%;
+        }
+
+        /* Styling for description paragraphs */
+        .description{
+            margin-left: 1%;
+            margin-right: 1%;
+        }
+
+        /* Styling for points section */
+        .points {
+            background-color: white;
+            border-radius: 20px;
+            width: 30%; 
+            margin: 10px;
+            padding: 10px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Styling for point icons */
+        .point-icon{
+            width: 40%;
+            margin-bottom: 10px;
+        }
+
+        /* Container for the cards */
+        .container{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        
+        /* Styling for individual cards */
+        .card {
+            width: 45%;
+            background-color: #fefcff;
+            margin-top: 20px;
+            border-radius: 20px;
+            margin-right: 40px;
+            margin-left: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+            position: relative; 
+        }
+
+        /* Content inside the card */
+        .card-content {
+            flex-grow: 1;
+        }
+
+        /* Container for buttons inside the card */
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        /* Styling for buttons */
+        .view-project, .apply {
+            width: 48%;
+            background-color: #ffdf00;
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            cursor: pointer; 
+            border-radius: 5px; 
+            font-size: large; 
+            margin: 10px 5px; 
+            transition: background-color 0.3s, color 0.3s; 
+        }
+
+        /* Different background color for apply button */
+        .apply {
+            background-color: #4CAF50;
+        }
+
+        /* Hover effect for buttons */
+        .view-project:hover, .apply:hover {
+            background-color: #333; 
+            color: white; 
+        }
+        
+        /* Hover effect for cards and points */
+        .card:hover, .points:hover{
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling for card description */
+        .card-description{
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Styling for card images */
+        .card-image{
+            width: 95%;
+            border-radius: 30px;
+            margin-left: 2%;
+            object-fit: cover;
+            height: 400px;
+            object-position: top;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Hover effect for card images */
+        .card-image:hover{
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 30px;
+        }
+
+        /* Styling for country flags */
+        .country-flag{
+            width: 4%;
+            margin-right: 10px;
+        }
+
+        /* Styling for tables */
+        table {
+            margin-left: 1%;
+            width: 98%;
+            border-collapse: collapse;
+        }
+
+        /* Styling for table headers */
+        th{
+            text-align: left;
+            color: white;
+            padding: 5px;
+            background-color: gainsboro;
+            transition: background-color 0.3s; 
+        }
+
+        /* Styling for specific table header cells */
+        .start-heading-cell{
+            border-top-left-radius: 10px;
+            background-color: #333;
+        }
+
+        .middle-heading-cell{
+            background-color: #333;
+        }
+
+        .end-heading-cell{
+            border-top-right-radius: 10px;
+            background-color: #333;
+            text-align: right;
+        }
+
+        /* Styling for table data cells */
+        td {
+            text-align: left;
+            background-color: gainsboro;
+            padding: 5px;
+            color: #333;
+        }
+
+        /* Hover effect for tables */
+        table:hover{
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+        }
+
+        /* Styling for specific table data cells */
+        .start-cell{
+            border-bottom-left-radius: 10px;
+        }
+
+        .end-cell {
+            text-align: right;
+            border-bottom-right-radius: 10px;
+        }
+
+        /* Styling for icons */
+        .icon{
+            width: 3%;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+
+        /* Styling for headings */
+        h2{
+            margin-left: 1%;
+            font-size: large;
+        }
+
+        /* Container for sorting options */
+        .sort{
+            margin-left: 1%;
+            display: flex;
+            justify-content: flex-end;
+            margin-top: -30px;
+            border-radius: 20px;
+        }
+
+        /* Styling for select dropdown */
+        select{
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            font-size: 1rem;
+            padding: 0.5em 1em;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            margin-right: 40px;
+        }
+
+        /* Hover effect for select dropdown */
+        select:hover{
+            background: #ffdf00;
+            color: white;
+        }
+
+        /* Container for holding multiple cards */
+        .holder{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        
+        /* Styling for heart icon */
+        .heart{
+            width: 4%;
+            position: absolute;
+            top: 20px; 
+            right: 20px; 
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Hover effect for heart icon */
+        .heart:hover {
+            border-radius: 20px;
+        }
+
+        /* Center text in points section */
+        .points{
+            text-align: center;
+        }
+
+        /* Left margin for specific elements */
+        .leftie{
+            margin-left: 3%;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Heading for the number of volunteer programs found -->
+    <h1 class="leftie">4 Volunteer programs found</h1>
+    <h3 class="leftie">Showing 1 to 4 of 4 results</h3>
+    <div class="sort">
+        <!-- Dropdown for sorting options -->
+        <select name="sort" id="sort">
+            <option value="popularity">By popularity</option>
+            <option value="date">By the date of publication</option>
+            <option value="duration">By duration</option>
+            <option value="location">By location</option>
+        </select>
+    </div>
+    <div class="holder">
+        <div class="card">
+            <div class="card-content">
+                <br>
+                <!-- Card for Peru volunteer program -->
+                <h2><img src="images/peru.png" alt="Peru" class="country-flag">Peru</h2>
+                <img src="images/heart.svg" alt="heart" class="heart">
+                <p class="description">Renewable energy and water in Peru</p>
+                <img src="images/renewables.avif" alt="country 1" class="card-image">
+                <div class="container">
+                    <div class="points">
+                        <img src="images/notebook.gif" alt="notebook" class="point-icon">
+                        <br>
+                        <p>Work alongside experienced & passionate people from a range of disciplines & backgrounds.</p>
+                    </div>
+                    <div class="points">
+                        <img src="images/sun.gif" alt="sun" class="point-icon">
+                        <br>
+                        <p>Live and work in a surfing paradise in northern Peru, the land of endless summer.</p>
+                    </div>
+                    <div class="points">
+                        <img src="images/view.gif" alt="view" class="point-icon">
+                        <br>
+                        <p>Explore other regions of Peru such as the rainforest, Machu Picchu and Lima.</p>
+                    </div>
+                </div>   
+                <div class="info">
+                    <p><img src="images/clock.png" alt="clock" class="icon">  Duration: 2 weeks up to maximum 26 weeks</p>
+                    <p><img src="images/user.png" alt="user" class="icon">  Volunteers aged 18+</p>
+                </div>
+                <table>
+                    <tr> 
+                        <th class="start-heading-cell">Duration</th>
+                        <th class="middle-heading-cell">Program Fee</th>
+                        <th class="end-heading-cell">Average Expenses</th>
+                    </tr>    
+                    <tr>
+                        <td class="start-cell">2 weeks</td>
+                        <td>£1,246</td>
+                        <td class="end-cell">89£/day</td>
+                    </tr>
+                </table>
+                <p class="description">
+                    Work on designing and implementing sustainable renewable energy initiatives to improve the lives of people in Peruvian vulnerable communities.<br>
+                    We are in need of hard-working interns with an interest and/or background knowledge/experience in renewables to come to Lobitos and help us in the implementation of these projects.<br>
+                    The financial contribution you make as an volunteer intern helps us plant a tree with community families in Lobitos with the volunteers at EcoSwell and the families engaging as well.<br>
+                    Installed a 2500W solar panel system at the artisanal Fisherman's Guild Community Hall in 2016 to harness energy from the year-round desert sunshine, thus reducing their operating costs and generating important income for their organization.
+                </p>
+            </div>
+            <div class="button-container">
+                <input type="button" class="view-project" value="View Project" onclick="window.location.href='https://www.volunteerworld.com/en/volunteer-program/renewable-energy-internship-in-peru-lobitos'">
+                <input type="button" class="apply" value="Apply" onclick="window.location.href='https://www.volunteerworld.com/en/book/renewable-energy-internship-in-peru-lobitos?EndDate=2025-04-14T00%3A00%3A00Z&GroupSize=1&StartDate=2025-04-01T00%3A00%3A00Z'">
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <br>
+                <!-- Card for Greece volunteer program -->
+                <h2><img src="images/greece.png" alt="Greece" class="country-flag">Greece<img src="images/heart.svg" alt="heart" class="heart"></h2>
+                <p class="description">Engineering Internship</p>
+                <img src="images/engineering.avif" alt="country 2" class="card-image">
+                <div class="container">
+                    <div class="points">
+                        <img src="images/drone.gif" alt="drone" class="point-icon">
+                        <br>
+                        <p>Hands-on experience on Drones, Electric Vehicles, Renewable Energy & Industry 5.0</p>
+                    </div>
+                    <div class="points">
+                        <img src="images/helmet.gif" alt="helmet" class="point-icon"><br>
+                        <br>
+                        <p>Develop your skills and understanding of different interdisciplinary engineering aspects</p>
+                        <br>
+                    </div>
+                    <div class="points">
+                        <img src="images/parthenon.gif" alt="parthenon" class="point-icon">
+                        <br>
+                        <p>Explore the most vibrant city in Greece and the surrounding islands</p>
+                    </div>
+                </div>   
+                <div class="info">
+                    <p><img src="images/clock.png" alt="clock" class="icon">  Duration: 2 weeks up to maximum 12 weeks</p>
+                    <p><img src="images/user.png" alt="user" class="icon">  Volunteers aged 18+</p>
+                </div>
+                <table>
+                    <tr> 
+                        <th class="start-heading-cell">Duration</th>
+                        <th class="middle-heading-cell">Program Fee</th>
+                        <th class="end-heading-cell">Average Expenses</th>
+                    </tr>    
+                    <tr>
+                        <td class="start-cell">2 weeks</td>
+                        <td>£1,866</td>
+                        <td class="end-cell">134£/day</td>
+                    </tr>
+                </table>
+                <p class="description">
+                    This is an in-country hands-on internship program, at the research center of the International Hellenic University in Thessaloniki (Greece) with provided shared housing and local team support.<br>
+                    Interns will have the opportunity to choose between four career paths: Drones, Electric Vehicles, Renewable Energy & Industry 5.0<br>
+                    <strong>Drones:</strong> Interns will have the opportunity to design, assemble, program drones and their sub-systems. The program is designed to be hands-on and allow the intern to work in various phases of the drone development including field work.<br>
+                    <strong>Electromobility:</strong> The participants will work across the spectrum of sustainable mobility solutions and sub-systems such as electric vehicles (cars, bikes, scooters), batteries, chargers, powertrains etc.<br>
+                </p>
+            </div>
+            <div class="button-container">
+                <input type="button" class="view-project" value="View Project" onclick="window.location.href='https://www.volunteerworld.com/en/volunteer-program/engineering-internship-in-greece-thessaloniki'">
+                <input type="button" class="apply" value="Apply" onclick="window.location.href='https://www.volunteerworld.com/en/book/engineering-internship-in-greece-thessaloniki?EndDate=2025-03-20T00%3A00%3A00Z&GroupSize=1&StartDate=2025-03-07T00%3A00%3A00Z'">
+            </div>
+        </div>
+    </div>
+    
+    <div class="holder">
+        <div class="card">
+            <div class="card-content">
+                <br>
+                <!-- Card for Peru wind turbine program -->
+                <h2><img src="images/peru.png" alt="Peru" class="country-flag">Peru<img src="images/heart.svg" alt="heart" class="heart"></h2>                     
+                <p class="description">Wind Turbine Engineering Program</p>
+                <img src="images/wind.avif" alt="country 3" class="card-image">
+                <div class="container">
+                    <div class="points">
+                        <img src="images/turbine.gif" alt="turbine" class="point-icon">
+                        <br>
+                        <p>Gain professional hands-on experience by learning about the design, construction, and installation of a wind turbine.</p>
+                    </div>
+                    <div class="points">
+                        <img src="images/international.gif" alt="international" class="point-icon">
+                        <br>
+                        <p>Work in an international team with experienced & passionate people from a range of different backgrounds.</p>
+                    </div>
+                    <div class="points">
+                        <img src="images/water-well.gif" alt="water-well" class="point-icon">
+                        <br>
+                        <p>Experience the life and culture of Peru by visiting and helping remote communities to have access to clean electricity</p>
+                    </div>
+                </div>   
+                <div class="info">
+                    <p><img src="images/clock.png" alt="clock" class="icon">  Duration: 2 weeks up to maximum 4 weeks </p>
+                    <p><img src="images/user.png" alt="user" class="icon">  Volunteers aged 18+</p>
+                </div>
+                <table>
+                    <tr> 
+                        <th class="start-heading-cell">Duration</th>
+                        <th class="middle-heading-cell">Program Fee</th>
+                        <th class="end-heading-cell">Average Expenses</th>
+                    </tr>    
+                    <tr>
+                        <td class="start-cell">2 weeks</td>
+                        <td>£3,081</td>
+                        <td class="end-cell">220£/day</td>
+                    </tr>
+                </table>
+                <p class="description">
+                    WindAid projects provide electricity to remote communities utilising wind energy to provide a clean and reliable source of energy in locations where traditional electricity is not available.<br>
+                    <strong>7 million Peruvians do not have access to electricity.</strong><br> 
+                    Access to electricity is a necessity for the quality of life of any human being living today.
+                    Many of us don't even think twice about turning on the light switch in our homes, but energy poverty severely limits the ability and opportunity for those without access to electricity to thrive. We want to change that.
+                </p>
+            </div>
+            <div class="button-container">
+                <input type="button" class="view-project" value="View Project" onclick="window.location.href='https://www.volunteerworld.com/en/volunteer-program/internship-renewable-energy-wind-turbines-on-site-in-peru-trujillo'">
+                <input type="button" class="apply" value="Apply" onclick="window.location.href='https://www.volunteerworld.com/en/book/internship-renewable-energy-wind-turbines-on-site-in-peru-trujillo?EndDate=2025-03-20T00%3A00%3A00Z&GroupSize=1&StartDate=2025-03-07T00%3A00%3A00Z'">
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <br>
+                <!-- Card for Peru wind and solar technician program -->
+                <h2><img src="images/peru.png" alt="Peru" class="country-flag">Peru<img src="images/heart.svg" alt="heart" class="heart"></h2>
+                <p class="description">Wind and Solar Technician</p>
+                <img src="images/community.avif" alt="country 4" class="card-image">
+                <div class="container">
+                    <div class="points">
+                        <img src="images/spanish-language.gif" alt="spanish-language" class="point-icon">
+                        <br>
+                        <p>Improve your Spanish by working alongside local Peruvians</p>
+                    </div>
+                    <div class="points">
+                        <img src="images/wind-turbine.gif" alt="wind-turbine" class="point-icon">
+                        <br>
+                        <p>Participate in a fast-tracked program that teaches you how to build wind turbine parts and install a solar panel system in the field. No experience required.</p>
+                    </div>
+                    <div class="points">
+                        <img src="images/renewable-energy.gif" alt="renewable-energy" class="point-icon">
+                        <br>
+                        <p>Learn about renewable technologies and clean energy.</p>
+                    </div>
+                </div>   
+                <div class="info">
+                    <p><img src="images/clock.png" alt="clock" class="icon">  Duration: 2 weeks maximum </p>
+                    <p><img src="images/user.png" alt="user" class="icon">  Volunteers aged 18+ </p>
+                </div>
+                <table>
+                    <tr> 
+                        <th class="start-heading-cell">Duration</th>
+                        <th class="middle-heading-cell">Program Fee</th>
+                        <th class="end-heading-cell">Average Expenses</th>
+                    </tr>    
+                    <tr>
+                        <td class="start-cell">2 weeks</td>
+                        <td>£1,218</td>
+                        <td class="end-cell">87£/day</td>
+                    </tr>
+                </table>
+                <p class="description">
+                    Our workshop is based in Trujillo, a city situated on the northern coast of Peru. It has some excellent prehispanic archeological sites to visit, such as the Historic Center from the colonial era.<br>
+                    Trujillo is also 30 minutes away form Huanchaco, a popular beach recognized as one of the best places in the world to catch a wave. <br>
+                    You will travel the country to install the turbines you have built. Either in the mountains or in remote coastal fishing villages in the desert.
+                </p>
+            </div>
+            <div class="button-container">
+                <input type="button" class="view-project" value="View Project" onclick="window.location.href='https://www.volunteerworld.com/en/volunteer-program/wind-and-solar-technician-in-peru-trujillo'">
+                <input type="button" class="apply" value="Apply" onclick="window.location.href='https://www.volunteerworld.com/en/book/wind-and-solar-technician-in-peru-trujillo?EndDate=2025-03-20T00%3A00%3A00Z&GroupSize=1&StartDate=2025-03-07T00%3A00%3A00Z'">
+            </div>
+        </div>
+    </div>
+    <br>
+</body>
+</html>
